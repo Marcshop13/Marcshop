@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MarcShop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#produits">Produits</a></li>
+        <li><a href="#panier">Panier</a></li>
+        <li><a href="#connexion">Se connecter</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="accueil">
+    <h1>Bienvenue chez MarcShop</h1>
+    <p>Découvrez nos produits !</p>
+  </section>
+
+  <section id="produits">
+    <h2>Nos Produits</h2>
+    <!-- Les produits vont ici -->
+  </section>
+
+  <footer>
+    <p>&copy; 2025 MarcShop. Tous droits réservés.</p>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html><section id="produits">
+    <h2>Nos Produits</h2>
+    <div class="produit" id="produit1">
+      <img src="images/produit1.jpg" alt="Produit 1">
+      <h3>Nom du Produit</h3>
+      <p>Description du produit...</p>
+      <p><strong>Prix : $29,99</strong></p>
+      <button onclick="ajouterAuPanier('produit1')">Ajouter au panier</button>
+    </div>
+    <!-- Ajoute plus de produits ici -->
+  </section><section id="panier">
+    <h2>Mon Panier</h2>
+    <ul id="liste-panier">
+      <!-- Les produits ajoutés au panier seront listés ici -->
+    </ul>
+    <p><strong>Total : </strong><span id="total">$0</span></p>
+    <button onclick="validerCommande()">Valider la commande</button>
+  </section><div id="paypal-button-container"></div>
+
+  <script src="https://www.paypal.com/sdk/js?client-id=ActOWDtEW7VcCkWDjChLthGFW3vlmi_AnhWBjGEk2nL7hYsCQ6O03H64tDXX6PliIW39E-OgIx1XQypx&components=buttons"></script>
+  <script>
+    paypal.Buttons({
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: total.toFixed(2)
+            }
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          alert("Commande confirmée ! Merci, " + details.payer.name.given_name);
+        });
+      }
+    }).render('#paypal-button-container');
+  </script><!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarcShop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+</html>
